@@ -19,7 +19,7 @@ const Card = (props) => {
         top: `${props.index * 440}px`,
       }}
     >
-      <div className="bg-[#4365D0] h-44 rounded-[20px] w-[96%] ml-[20px] z-30 absolute top-0 px-10 py-4 ">
+      <div className="bg-[#4365D0] h-44 rounded-[20px] w-[96%] ml-[25px] z-30 absolute top-0 px-10 py-4 ">
         <div className="flex justify-between" key={props.index}>
           <div className="flex space-x-10">
             <div className="flex text-white space-x-2">
