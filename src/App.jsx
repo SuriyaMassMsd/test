@@ -6,23 +6,25 @@ import data from "./assets/data/data";
 
 export const App = () => {
   return (
-    <div className="px-[100px] py-4 ">
+    <div className="px-4 sm:px-[100px] py-4 ">
       <header className="">
         <nav>
           <Navbar />
         </nav>
       </header>
-      <main className="mt-5 font-normal text-[20px] text-[#404040] flex flex-col sm:flex-row gap-10 px-4">
+      <main className="mt-5 font-normal text-[20px] text-[#404040] flex flex-col sm:flex-row gap-10 px-2 sm:px-4">
         <section className="flex-1">
-          <p>Dashboard / Community / Questions</p>
+          <p className="text-center sm:text-start">
+            Dashboard / Community / Questions
+          </p>
           <Fliter />
-          <div className="">
+          <div className="mt-[120px]">
             {data.map((item, index) => {
               return <Card item={item} index={index} />;
             })}
           </div>
         </section>
-        <aside className="mt-[70px] ">
+        <aside className="mt-0 sm:mt-[70px]  ">
           <div className="h-[450px] rounded-2xl w-[350px] border border-gray-400 ">
             <h3 className="h-[60px] rounded-t-2xl px-10 py-4  bg-[#E0E8FF]">
               How our form works ?

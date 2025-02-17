@@ -3,20 +3,20 @@ import React from "react";
 const Fliter = () => {
   const filteBtn = ["Latest", "Active", "Unanswered", "Saved"];
   return (
-    <div className="mt-10 space-y-5">
-      <div className="flex justify-between items-center">
-        <h1 className="font-bold ">All Questions</h1>
-        <button className="px-10 font-thin py-1 text-white bg-[#4365D0] rounded-[10px]">
+    <div className="mt-4 sm:mt-10 space-y-5">
+      <div className="flex items-center justify-between ">
+        <h1 className="font-bold text-[18px] sm:text-[22px]">All Questions</h1>
+        <button className="px-10 font-thin py-1 text-white bg-[#4365D0] rounded-[10px] ">
           Post Question
         </button>
       </div>
-      <div className=" flex justify-between items-center">
+      <div className=" mt-10 sm:mt-0 flex flex-col sm:flex-row space-y-6 sm:space-y-0 justify-between items-center px-4 sm:ml-0 sm:px-0">
         <div className="space-x-4">
           {filteBtn.map((item, index) => {
             return (
               <span
                 key={index}
-                className="px-10 py-2 text-[18px] rounded-xl border-2   border-gray-300 hover:bg-gray-300 hover:text-gray-500   hover:cursor-pointer transition-all"
+                className="px-4 sm:px-10 py-2 text-[18px] rounded-xl border-2   border-gray-300 hover:bg-gray-300 hover:text-gray-500   hover:cursor-pointer transition-all"
               >
                 {item}
               </span>
