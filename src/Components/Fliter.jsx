@@ -11,7 +11,7 @@ const Fliter = () => {
         </button>
       </div>
       <div className=" mt-10 sm:mt-0 flex flex-col sm:flex-row space-y-6 sm:space-y-0 justify-between items-center px-4 sm:ml-0 sm:px-0">
-        <div className="space-x-4">
+        <div className="space-x-2">
           {filteBtn.map((item, index) => {
             return (
               <span

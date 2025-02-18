@@ -18,7 +18,7 @@ const Card = (props) => {
         {/* White Card (Bottom Section)  */}
 
         <div className="bg-white border border-gray-200 shadow-md rounded-[20px] w-full px-6 py-4 min-h-[280px] sm:px-10 sm:py-6 mt-[20px] relative z-0">
-          <div className="mt-[180px] sm:mt-[110px]">
+          <div className="mt-[200px] sm:mt-[110px]">
             <p className="text-[16px] sm:text-[22px]">{description}</p>
 
             {/* Tags */}

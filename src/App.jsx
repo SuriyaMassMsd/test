@@ -44,7 +44,7 @@ export const App = () => {
               </li>
             </ul>
           </div>
-          <div className="h-[300px] rounded-2xl w-[350px] border border-gray-400 -mt-[50px]">
+          <div className="min-h-[300px] rounded-2xl w-[350px] border border-gray-400 -mt-[50px]">
             <h3 className="h-[60px] rounded-t-2xl px-10 py-4  bg-[#E0E8FF]">
               Earn your reputation
             </h3>
