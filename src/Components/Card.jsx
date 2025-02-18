@@ -36,7 +36,11 @@ const Card = (props) => {
         </div>
 
         {/* Blue Card (Top Section) */}
-        <div className="bg-[#4365D0] min-h-44 rounded-[20px] w-[96%] px-6 py-4 sm:px-10 sm:py-6 shadow-lg text-white absolute top-[-80px] z-10">
+        <div
+          className={`${
+            props.index % 2 === 0 ? "bg-[#4365D0]" : " bg-[#3FA8C0]"
+          }  min-h-44 rounded-[20px] w-[96%] px-6 py-4 sm:px-10 sm:py-6 shadow-lg text-white absolute top-[-80px] z-10`}
+        >
           <div className="flex justify-between flex-col sm:flex-row">
             <div className="flex space-x-6">
               {/* Upvotes */}
