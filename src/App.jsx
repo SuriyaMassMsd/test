@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Grid, Box, Paper, Typography } from "@mui/material";
 import Navbar from "./Components/Navbar";
 import Fliter from "./Components/Fliter";
 import Card from "./Components/Card";
@@ -6,63 +7,112 @@ import data from "./assets/data/data";
 
 export const App = () => {
   return (
-    <div className="px-4 sm:px-[100px] py-4 ">
-      <header className="">
-        <nav>
-          <Navbar />
-        </nav>
-      </header>
-      <main className="mt-5 font-normal text-[20px] text-[#404040] flex flex-col sm:flex-row gap-10 px-2 sm:px-4">
-        <section className="flex-1">
-          <p className="text-center sm:text-start">
+    <Container maxWidth="lg" sx={{ py: 3 }}>
+      {/* Navbar */}
+      <Navbar />
+
+      {/* Main Section */}
+      <Grid container spacing={4} sx={{ mt: 3 }}>
+        {/* Left Section */}
+        <Grid item xs={12} sm={8}>
+          <Typography
+            variant="body1"
+            color="textSecondary"
+            fontSize={{ xs: 10, sm: 20 }}
+            sx={{ textAlign: { xs: "center", sm: "left" }, mb: 2 }}
+          >
             Dashboard / Community / Questions
-          </p>
+          </Typography>
+
+          {/* Filter Section */}
           <Fliter />
-          <div className="mt-[120px]">
-            {data.map((item, index) => {
-              return <Card item={item} index={index} />;
-            })}
-          </div>
-        </section>
-        <aside className="mt-0 sm:mt-[70px]  ">
-          <div className="h-[450px] rounded-2xl w-[350px] border border-gray-400 ">
-            <h3 className="h-[60px] rounded-t-2xl px-10 py-4  bg-[#E0E8FF]">
-              How our form works ?
-            </h3>
-            <ul className="list-disc px-10 py-2 space-y-3">
-              <li className="marker:text-3xl marker:text-[#4365D0]">
-                At vero eos et accusamus et iusto odio dignissimos
-              </li>
-              <li className="marker:text-3xl marker:text-[#4365D0]">
-                Ducimus qui blanditiis praesentium voluptatum
-              </li>
-              <li className="marker:text-3xl marker:text-[#4365D0]">
-                Deleniti atque corrupti quos dolores et quas
-              </li>
-              <li className="marker:text-3xl marker:text-[#4365D0]">
-                Nam libero tempore, cum soluta nobis est
-              </li>
-            </ul>
-          </div>
-          <div className="min-h-[300px] rounded-2xl w-[350px] border border-gray-400 -mt-[50px]">
-            <h3 className="h-[60px] rounded-t-2xl px-10 py-4  bg-[#E0E8FF]">
+
+          {/* Cards List */}
+          <Box sx={{ mt: 10 }}>
+            {data.map((item, index) => (
+              <Card key={index} item={item} index={index} />
+            ))}
+          </Box>
+        </Grid>
+
+        {/* Right Section (Sidebar) */}
+        <Grid item xs={12} sm={4}>
+          {/* How Our Form Works */}
+          <Paper elevation={3} sx={{ borderRadius: 2, mb: 3 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                bgcolor: "#E0E8FF",
+                p: 2,
+                borderRadius: "10px 10px 0 0",
+                fontWeight: "bold",
+              }}
+            >
+              How our form works?
+            </Typography>
+            <Box sx={{ p: 3 }}>
+              <ul style={{ paddingLeft: 20 }}>
+                {[
+                  "At vero eos et accusamus et iusto odio dignissimos",
+                  "Ducimus qui blanditiis praesentium voluptatum",
+                  "Deleniti atque corrupti quos dolores et quas",
+                  "Nam libero tempore, cum soluta nobis est",
+                ].map((text, idx) => (
+                  <li key={idx} style={{ marginBottom: 8, color: "#000" }}>
+                    {text}
+                  </li>
+                ))}
+              </ul>
+            </Box>
+          </Paper>
+
+          {/* Earn Your Reputation */}
+          <Paper elevation={3} sx={{ borderRadius: 2, mb: 3, mt: -5 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                bgcolor: "#E0E8FF",
+                p: 2,
+                borderRadius: "10px 10px 0 0",
+                fontWeight: "bold",
+              }}
+            >
               Earn your reputation
-            </h3>
-            <p className="px-10 py-4">
-              omnis voluptas assumenda est, omnis dolor repellendus. Temporibus
+            </Typography>
+            <Typography sx={{ p: 3, color: "#404040" }}>
+              Omnis voluptas assumenda est, omnis dolor repellendus. Temporibus
               autem quibusdam et aut officiis debitis aut rerum necessitatibus
               saepe eveniet ut et voluptates repudiandae sint et molestiae non
               recusandae.
-            </p>
-          </div>
-          <div className="h-[500px] rounded-2xl w-[350px] border border-gray-400 mt-[50px]">
-            <h3 className="h-[60px] rounded-t-2xl px-10 py-4  bg-[#E0E8FF]">
+            </Typography>
+          </Paper>
+
+          {/* Participate in Challenges */}
+          <Paper elevation={3} sx={{ borderRadius: 2 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                bgcolor: "#E0E8FF",
+                p: 2,
+                borderRadius: "10px 10px 0 0",
+                fontWeight: "bold",
+              }}
+            >
               Participate in challenges
-            </h3>
-            <img className="rounded-b-2xl" src="cardimg.png" alt="cardimg" />
-          </div>
-        </aside>
-      </main>
-    </div>
+            </Typography>
+            <Box
+              component="img"
+              src="cardimg.png"
+              alt="cardimg"
+              sx={{
+                width: "100%",
+                borderRadius: "0 0 10px 10px",
+                display: "block",
+              }}
+            />
+          </Paper>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };

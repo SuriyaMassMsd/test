@@ -1,6 +1,9 @@
 import React from "react";
+import { Card, CardContent, Box, Typography, Avatar } from "@mui/material";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
-const Card = (props) => {
+const MUIStyledCard = ({ item, index }) => {
   const {
     upvotes,
     total_upvotes,
@@ -10,102 +13,175 @@ const Card = (props) => {
     question,
     description,
     tags,
-  } = props.item;
+  } = item;
 
   return (
-    <div className="w-full flex justify-center mt-16 relative">
-      <div className="relative w-[420px] sm:w-full flex flex-col items-center space-y-[100px] ">
-        {/* White Card (Bottom Section)  */}
-
-        <div className="bg-white border border-gray-200 shadow-md rounded-[20px] w-full px-6 py-4 min-h-[280px] sm:px-10 sm:py-6 mt-[20px] relative z-0">
-          <div className="mt-[200px] sm:mt-[110px]">
-            <p className="text-[16px] sm:text-[22px]">{description}</p>
+    <Box display="flex" justifyContent="center" mt={4} position="relative">
+      <Box
+        width={{ xs: "100%", sm: "880px" }}
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        class="space-y-16"
+      >
+        {/* White Card (Bottom Section) */}
+        <Card
+          sx={{ p: 3, minHeight: 280, borderRadius: "20px", mt: 5, zIndex: 0 }}
+        >
+          <CardContent sx={{ mt: { xs: 14, sm: 10 } }}>
+            <Typography
+              variant="body1"
+              class="mt-[100px] sm:mt-[40px] text-md sm:text-xl"
+            >
+              {description}
+            </Typography>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2 mt-4">
+            <Box
+              display="flex"
+              flexWrap="wrap"
+              gap={{ xs: 1, sm: 2, md: 3 }}
+              mt={2}
+            >
               {tags.map((tag, index) => (
-                <span
+                <Box
                   key={index}
-                  className="px-4 py-2 bg-gray-200 text-gray-700 text-[15px] sm:text-[18px] font-bold rounded-lg"
+                  sx={{
+                    px: { xs: 1, sm: 3, md: 4 }, // Larger padding on bigger screens
+                    py: { xs: 0.5, sm: 1, md: 1.5 },
+                    bgcolor: "grey.300",
+                    color: "grey.700",
+                    fontWeight: "bold",
+                    borderRadius: "8px",
+                    fontSize: { xs: 12, sm: 16, md: 18 }, // Bigger font on laptops
+                  }}
                 >
                   {tag}
-                </span>
+                </Box>
               ))}
-            </div>
-          </div>
-        </div>
+            </Box>
+          </CardContent>
+        </Card>
 
         {/* Blue Card (Top Section) */}
-        <div
-          className={`${
-            props.index % 2 === 0 ? "bg-[#4365D0]" : " bg-[#3FA8C0]"
-          }  min-h-44 rounded-[20px] w-[96%] px-6 py-4 sm:px-10 sm:py-6 shadow-lg text-white absolute top-[-80px] z-10`}
+        <Card
+          sx={{
+            position: "absolute",
+            top: { xs: "-30px", sm: "-50px" }, // Smaller top spacing on mobile
+            width: { xs: "90%", sm: "96%" }, // Smaller width on mobile
+            left: { xs: "5%", sm: "2%" }, // Adjust left margin
+            minHeight: { xs: 80, sm: 110 }, // Smaller height on mobile
+            bgcolor: index % 2 === 0 ? "#4365D0" : "#3FA8C0",
+            color: "white",
+            p: { xs: 1, sm: 2 }, // Smaller padding on mobile
+            borderRadius: "20px",
+            boxShadow: 3,
+            zIndex: 10,
+          }}
         >
-          <div className="flex justify-between flex-col sm:flex-row">
-            <div className="flex space-x-6">
-              {/* Upvotes */}
-              <div className="flex items-center space-x-2">
-                <img
-                  className="w-8 h-8 sm:w-10 sm:h-10"
-                  src="uparrow.png"
-                  alt="Upvote"
-                />
-                <div className="flex flex-col leading-5">
-                  <span className="font-bold text-[18px]">{upvotes}</span>
-                  <span className="font-normal text-[16px]">Upvotes</span>
-                </div>
-                <span className="hidden sm:flex h-9 border-r ml-2 rounded-[2px] border-white"></span>
-              </div>
+          <CardContent>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              flexDirection={{ xs: "column", sm: "row" }}
+            >
+              <Box display="flex" gap={2} alignItems="center" flexWrap="wrap">
+                {/* Upvotes */}
+                <Box display="flex" alignItems="center" gap={1}>
+                  <ArrowUpwardIcon
+                    fontSize="small"
+                    sx={{ fontSize: { xs: 20, sm: 30 } }}
+                  />
+                  <Box>
+                    <Typography fontWeight="bold" fontSize={{ xs: 14, sm: 18 }}>
+                      {upvotes}
+                    </Typography>
+                    <Typography fontSize={{ xs: 12, sm: 16 }}>
+                      Upvotes
+                    </Typography>
+                  </Box>
+                </Box>
 
-              {/* Total Upvotes */}
-              <div className="flex items-center space-x-2">
-                <img
-                  className="w-8 h-8 sm:w-10 sm:h-10"
-                  src="downarrow.png"
-                  alt="Downvote"
-                />
-                <div className="flex flex-col leading-5">
-                  <span className="font-bold text-[18px]">{total_upvotes}</span>
-                  <span className="font-normal text-[16px]">Upvotes</span>
-                </div>
-                <span className="hidden sm:flex h-9 border-r ml-2 rounded-[2px] border-white"></span>
-              </div>
+                {/* Total Upvotes */}
+                <Box display="flex" alignItems="center" gap={1}>
+                  <ArrowDownwardIcon
+                    fontSize="small"
+                    sx={{ fontSize: { xs: 20, sm: 30 } }}
+                  />
+                  <Box>
+                    <Typography fontWeight="bold" fontSize={{ xs: 14, sm: 18 }}>
+                      {total_upvotes}
+                    </Typography>
+                    <Typography fontSize={{ xs: 12, sm: 16 }}>
+                      Upvotes
+                    </Typography>
+                  </Box>
+                </Box>
 
-              {/* Answers */}
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white p-2 flex justify-center items-center rounded-full text-black font-semibold">
-                  A
-                </div>
-                <div className="flex flex-col leading-5">
-                  <span className="font-bold text-[18px]">{answers}</span>
-                  <span className="font-normal text-[16px]">Answers</span>
-                </div>
-                <span className="hidden sm:flex h-9 border-r ml-2 rounded-[2px] border-white"></span>
-              </div>
-            </div>
+                {/* Answers */}
+                <Box display="flex" alignItems="center" gap={1}>
+                  <Avatar
+                    sx={{
+                      bgcolor: "white",
+                      color: "black",
+                      fontWeight: "bold",
+                      width: { xs: 24, sm: 32 },
+                      height: { xs: 24, sm: 32 },
+                      fontSize: { xs: 14, sm: 18 },
+                    }}
+                  >
+                    A
+                  </Avatar>
+                  <Box>
+                    <Typography fontWeight="bold" fontSize={{ xs: 14, sm: 18 }}>
+                      {answers}
+                    </Typography>
+                    <Typography fontSize={{ xs: 12, sm: 16 }}>
+                      Answers
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
 
-            {/* Author Info */}
-            <div className="flex items-center space-x-4 mt-4 sm:mt-0 mx-auto sm:mx-0">
-              <div className="flex flex-col leading-5">
-                <h5 className="text-[15px] sm:text-[18px] font-bold">
-                  {author}
-                </h5>
-                <span className="font-thin text-[15px]">{time}</span>
-              </div>
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white p-2 flex justify-center items-center rounded-full text-black text-[18px] font-semibold">
-                {author[0]}
-              </div>
-            </div>
-          </div>
+              {/* Author Info */}
+              <Box
+                display="flex"
+                alignItems="center"
+                gap={2}
+                mt={{ xs: 2, sm: 0 }}
+              >
+                <Box>
+                  <Typography fontWeight="bold" fontSize={{ xs: 14, sm: 18 }}>
+                    {author}
+                  </Typography>
+                  <Typography variant="body2" fontSize={{ xs: 12, sm: 16 }}>
+                    {time}
+                  </Typography>
+                </Box>
+                <Avatar
+                  sx={{
+                    bgcolor: "white",
+                    color: "black",
+                    fontWeight: "bold",
+                    width: { xs: 24, sm: 32 },
+                    height: { xs: 24, sm: 32 },
+                    fontSize: { xs: 14, sm: 18 },
+                  }}
+                >
+                  {author[0]}
+                </Avatar>
+              </Box>
+            </Box>
 
-          {/* Question */}
-          <p className="text-[16px] sm:text-[22px] font-normal mt-4 text-white">
-            {question}
-          </p>
-        </div>
-      </div>
-    </div>
+            {/* Question */}
+            <Typography mt={2} fontWeight="bold" fontSize={{ xs: 14, sm: 18 }}>
+              {question}
+            </Typography>
+          </CardContent>
+        </Card>
+      </Box>
+    </Box>
   );
 };
 
-export default Card;
+export default MUIStyledCard;

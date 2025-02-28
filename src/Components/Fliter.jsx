@@ -1,62 +1,111 @@
 import React from "react";
+import { Box, Button, Typography, Stack } from "@mui/material";
 
 const Fliter = () => {
   const filteBtn = ["Latest", "Active", "Unanswered", "Saved"];
-  return (
-    <div className="mt-4 sm:mt-10 space-y-5">
-      <div className="flex items-center justify-between ">
-        <h1 className="font-bold text-[18px] sm:text-[22px]">All Questions</h1>
-        <button className="px-10 font-thin py-1 text-white bg-[#4365D0] rounded-[10px] ">
-          Post Question
-        </button>
-      </div>
-      <div className=" mt-10 sm:mt-0 flex flex-col sm:flex-row space-y-6 sm:space-y-0 justify-between items-center px-4 sm:ml-0 sm:px-0">
-        <div className="space-x-2">
-          {filteBtn.map((item, index) => {
-            return (
-              <span
-                key={index}
-                className="px-4 sm:px-10 py-2 text-[18px] rounded-xl border-2   border-gray-300 hover:bg-gray-300 hover:text-gray-500   hover:cursor-pointer transition-all"
-              >
-                {item}
-              </span>
-            );
-          })}
-        </div>
 
-        <div>
-          <button className="flex space-x-2 items-center px-2 py-2 text-[18px] rounded-xl border-2   border-gray-300 hover:bg-gray-300 hover:text-gray-500   hover:cursor-pointer transition-all">
-            <span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="currentColor"
-                  d="M11 18q-.425 0-.712-.288T10 17t.288-.712T11 16h2q.425 0 .713.288T14 17t-.288.713T13 18zm-4-5q-.425 0-.712-.288T6 12t.288-.712T7 11h10q.425 0 .713.288T18 12t-.288.713T17 13zM4 8q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z"
-                />
-              </svg>
-            </span>
-            <span>Fliters</span>
-            <span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="currentColor"
-                  d="m12 15.4l-6-6L7.4 8l4.6 4.6L16.6 8L18 9.4z"
-                />
-              </svg>
-            </span>
-          </button>
-        </div>
-      </div>
-    </div>
+  return (
+    <Box mt={4} sx={{ width: "100%" }}>
+      {/* Header Section */}
+      <Stack direction="row" justifyContent="space-between" alignItems="center">
+        <Typography
+          fontWeight="bold"
+          sx={{ fontSize: { xs: "18px", sm: "22px" } }}
+        >
+          All Questions
+        </Typography>
+        <Button
+          variant="contained"
+          sx={{
+            bgcolor: "#4365D0",
+            px: { xs: 3, sm: 5 },
+            py: { xs: 0.5, sm: 1 },
+            borderRadius: "10px",
+            fontSize: { xs: "12px", sm: "16px" },
+            "&:hover": { bgcolor: "#3650A0" },
+          }}
+        >
+          Post Question
+        </Button>
+      </Stack>
+
+      {/* Filters Section */}
+      <Stack
+        direction={{ xs: "coulmn", sm: "row" }}
+        justifyContent="space-between"
+        alignItems="center"
+        spacing={{ xs: 1, sm: 4 }}
+        mt={3}
+        gap={4}
+        // flexWrap="wrap"
+      >
+        {/* Filter Buttons (4 in one line on mobile) */}
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gap: 1,
+            width: { xs: "100%", sm: "80%" },
+          }}
+        >
+          {filteBtn.map((item, index) => (
+            <Button
+              key={index}
+              variant="outlined"
+              sx={{
+                px: { xs: 5.5, sm: 3 },
+                py: { xs: 1, sm: 1 },
+                fontSize: { xs: "10px", sm: "14px" },
+                borderRadius: "10px",
+                borderColor: "gray",
+                color: "gray",
+                "&:hover": {
+                  bgcolor: "grey.300",
+                  color: "black",
+                  borderColor: "black",
+                },
+              }}
+            >
+              {item}
+            </Button>
+          ))}
+        </Box>
+
+        {/* Filters Dropdown Button */}
+        <Button
+          variant="outlined"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+            px: { xs: 2, sm: 3 },
+            py: { xs: 0.5, sm: 1 },
+            fontSize: { xs: "12px", sm: "16px" },
+            borderRadius: "10px",
+            borderColor: "gray",
+            color: "gray",
+            "&:hover": {
+              bgcolor: "grey.300",
+              color: "black",
+              borderColor: "black",
+            },
+          }}
+        >
+          <span>Filters</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="m12 15.4l-6-6L7.4 8l4.6 4.6L16.6 8L18 9.4z"
+            />
+          </svg>
+        </Button>
+      </Stack>
+    </Box>
   );
 };
 
